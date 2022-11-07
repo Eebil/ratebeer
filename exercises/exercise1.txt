@@ -1,0 +1,62 @@
+irb(main):009:0> newBeer = Beer.create name: "Punk IPA", style: "IPA", brewery_id: new.id
+  TRANSACTION (0.2ms)  begin transaction
+  Brewery Load (1.1ms)  SELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?  [["id", 4], ["LIMIT", 1]]
+  Beer Create (0.3ms)  INSERT INTO "beers" ("name", "style", "brewery_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Punk IPA"], ["style", "IPA"], ["brewery_id", 4], ["created_at", "2022-11-07 08:47:40.821235"], ["updated_at", "2022-11-07 08:47:40.821235"]]
+  TRANSACTION (0.7ms)  commit transaction
+=>
+#<Beer:0x000000010b52e1d8
+...
+irb(main):010:0> newBeer = Beer.create name: "Nanny State", style: "lowalcohol", brewery_id: new
+=> #<Beer:0x000000010b39e250 id: nil, name: "Nanny State", style: "lowalcohol", brewery_id: nil, created_at: nil, updated_at: nil>
+irb(main):011:0> newBeer = Beer.create name: "Nanny State", style: "lowalcohol", brewery_id: new.id
+  TRANSACTION (0.1ms)  begin transaction
+  Brewery Load (1.3ms)  SELECT "breweries".* FROM "breweries" WHERE "breweries"."id" = ? LIMIT ?  [["id", 4], ["LIMIT", 1]]
+  Beer Create (0.6ms)  INSERT INTO "beers" ("name", "style", "brewery_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Nanny State"], ["style", "lowalcohol"], ["brewery_id", 4], ["created_at", "2022-11-07 08:48:49.435533"], ["updated_at", "2022-11-07 08:48:49.435533"]]
+  TRANSACTION (1.7ms)  commit transaction
+=>
+#<Beer:0x000000010ad15618
+...
+irb(main):012:0> newBeer
+=>
+#<Beer:0x000000010ad15618
+ id: 12,
+ name: "Nanny State",
+ style: "lowalcohol",
+ brewery_id: 4,
+ created_at: Mon, 07 Nov 2022 08:48:49.435533000 UTC +00:00,
+ updated_at: Mon, 07 Nov 2022 08:48:49.435533000 UTC +00:00>
+irb(main):013:0> beer = Beer.find(11)
+  Beer Load (2.0ms)  SELECT "beers".* FROM "beers" WHERE "beers"."id" = ? LIMIT ?  [["id", 11], ["LIMIT", 1]]
+=>
+#<Beer:0x000000010af06b98
+...
+irb(main):014:0> beer
+=>
+#<Beer:0x000000010af06b98
+ id: 11,
+ name: "Punk IPA",
+ style: "IPA",
+ brewery_id: 4,
+ created_at: Mon, 07 Nov 2022 08:47:40.821235000 UTC +00:00,
+ updated_at: Mon, 07 Nov 2022 08:47:40.821235000 UTC +00:00>
+irb(main):015:0> beer.ratings.create score: 15
+  TRANSACTION (0.2ms)  begin transaction
+  Rating Create (2.5ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 15], ["beer_id", 11], ["created_at", "2022-11-07 08:50:08.570949"], ["updated_at", "2022-11-07 08:50:08.570949"]]
+  TRANSACTION (1.9ms)  commit transaction
+=> #<Rating:0x000000010b2a4e30 id: 4, score: 15, beer_id: 11, created_at: Mon, 07 Nov 2022 08:50:08.570949000 UTC +00:00, updated_at: Mon, 07 Nov 2022 08:50:08.570949000 UTC +00:00>
+irb(main):016:0> beer.ratings.create score: 40
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (1.0ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 40], ["beer_id", 11], ["created_at", "2022-11-07 08:50:21.980867"], ["updated_at", "2022-11-07 08:50:21.980867"]]
+  TRANSACTION (1.4ms)  commit transaction
+=> #<Rating:0x0000000109acb7f0 id: 5, score: 40, beer_id: 11, created_at: Mon, 07 Nov 2022 08:50:21.980867000 UTC +00:00, updated_at: Mon, 07 Nov 2022 08:50:21.980867000 UTC +00:00>
+irb(main):017:0> newBeer.ratings.create score: 5
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (0.8ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 5], ["beer_id", 12], ["created_at", "2022-11-07 08:50:47.397365"], ["updated_at", "2022-11-07 08:50:47.397365"]]
+  TRANSACTION (0.6ms)  commit transaction
+=> #<Rating:0x000000010a9dced8 id: 6, score: 5, beer_id: 12, created_at: Mon, 07 Nov 2022 08:50:47.397365000 UTC +00:00, updated_at: Mon, 07 Nov 2022 08:50:47.397365000 UTC +00:00>
+irb(main):018:0> newBeer.ratings.create score: 26
+  TRANSACTION (0.1ms)  begin transaction
+  Rating Create (0.8ms)  INSERT INTO "ratings" ("score", "beer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["score", 26], ["beer_id", 12], ["created_at", "2022-11-07 08:50:55.442137"], ["updated_at", "2022-11-07 08:50:55.442137"]]
+  TRANSACTION (0.8ms)  commit transaction
+=> #<Rating:0x0000000109a52c10 id: 7, score: 26, beer_id: 12, created_at: Mon, 07 Nov 2022 08:50:55.442137000 UTC +00:00, updated_at: Mon, 07 Nov 2022 08:50:55.442137000 UTC +00:00>
+irb(main):019:0>
