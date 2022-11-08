@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<div id="<%= dom_id @user %>">
+  <p>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </p>
+  <p>
+    <%= "#{@user.username} has made #{pluralize(@user.ratings.count, 'rating')} with an average score of #{@user.average_rating}" %>
+  </p>
+</div>
+
+<div class="ratings">
+  <strong>Ratings</strong>
+  <% @user.ratings.each do |r| %>
+    <li> <%= r.to_s %> <%= link_to 'Delete', r, data: { "turbo_method": :delete } %>  </li>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <%= link_to "Back to users", users_path %>
+
+  <%= button_to "Destroy this user", @user, method: :delete %>
+</div>
