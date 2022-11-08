@@ -24,5 +24,4 @@ class RatingsController < ApplicationController
   def rating_params
     params.require(:rating).permit(:score, :beer_id)
   end
-
 end
