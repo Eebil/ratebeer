@@ -2,8 +2,7 @@ class Membership < ApplicationRecord
   belongs_to :user
   belongs_to :beer_club
 
-
-  def applicable_clubs_for_current_user
-    BeerClub.all
+  def applicable_clubs(user)
+    BeerClub.all.reject { |club| club.members.include?(user) } # skim out clubs that user is already part of
   end
 end

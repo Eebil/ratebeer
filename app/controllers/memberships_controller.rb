@@ -1,5 +1,5 @@
 class MembershipsController < ApplicationController
-  before_action :set_membership, only: %i[ show edit update destroy ]
+  before_action :set_membership, only: %i[show edit update destroy]
 
   # GET /memberships or /memberships.json
   def index
@@ -22,10 +22,12 @@ class MembershipsController < ApplicationController
   # POST /memberships or /memberships.json
   def create
     @membership = Membership.new(membership_params)
+    @membership.user_id = current_user.id
+    @beer_club = BeerClub.find(membership_params[:beer_club_id])
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to membership_url(@membership), notice: "Membership was successfully created." }
+        format.html { redirect_to @beer_club, notice: "Membership was successfully created." }
         format.json { render :show, status: :created, location: @membership }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -58,13 +60,14 @@ class MembershipsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_membership
-      @membership = Membership.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def membership_params
-      params.require(:membership).permit(:user_id, :beer_club_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_membership
+    @membership = Membership.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def membership_params
+    params.require(:membership).permit(:user_id, :beer_club_id)
+  end
 end
