@@ -10,6 +10,11 @@
   </p>
 </div>
 
+<% if @user.favorite_brewery %>
+  <strong>Favorite Brewery:</strong>
+  <%= @user.favorite_brewery %>
+<% end %>
+
 <div class="ratings">
   <strong>Ratings</strong>
   <ul>
