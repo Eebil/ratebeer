@@ -5,7 +5,10 @@ class Beer < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :raters, through: :ratings, source: :user
 
-  validates :name, length: { minimum: 1 }
+  validates :name, length: { minimum: 1 },
+                   presence: true
+  validates :style, presence: true
+  validates :brewery_id, presence: true
 
   def to_s
     "#{name}, #{brewery.name}"
