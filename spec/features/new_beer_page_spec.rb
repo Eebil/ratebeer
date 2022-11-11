@@ -3,8 +3,10 @@ require 'rails_helper'
 include Helpers
 
 describe "New Beer" do
+  let!(:user) { FactoryBot.create :user }
   before :each do
     FactoryBot.create :brewery
+    sign_in(username: "Pekka", password: "Foobar1")
   end
 
   it "creates new beer when given valid form entries" do
