@@ -35,6 +35,7 @@ jobs:
           bundler-cache: true
       - name: Run tests
         run: bundle exec rspec
+name: "Linters" 
  lint:
   runs-on: ubuntu-22.04
   steps:
