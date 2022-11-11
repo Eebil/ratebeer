@@ -11,8 +11,17 @@
 </div>
 
 <% if @user.favorite_brewery %>
-  <strong>Favorite Brewery:</strong>
-  <%= @user.favorite_brewery %>
+  <p>
+    <strong>Favorite Brewery:</strong>
+    <%= @user.favorite_brewery %>  
+  </p>
+<% end %>
+
+<% if @user.favorite_style %>
+  <p>
+    <strong>Favorite beer style:</strong>
+    <%= @user.favorite_style %>
+  </p>
 <% end %>
 
 <div class="ratings">

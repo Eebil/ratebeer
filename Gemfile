@@ -74,6 +74,8 @@ group :test do
   gem "webdrivers"
   gem "rspec-rails", "~> 6.0"
   gem "factory_bot_rails", "~> 6.2"
+  gem "launchy"
+  gem 'simplecov', require: false
 end
 
 gem "rubocop", "~> 1.38"

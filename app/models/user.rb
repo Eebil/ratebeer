@@ -33,13 +33,13 @@ class User < ApplicationRecord
     average_score_by_brewery.last[0]
   end
 
-  # Returns an array that has average ratings for each style for user 
+  # Returns an array that has average ratings for each style for user
   # example output: [["Lager", 24.0], ["IPA", 27.5], ["lowalcohol", 15.5], ["Porter", 5.0]]
   def average_score_by_style
-    ratings.group_by { |r| r.beer.style }.map { |style, ratings|  [style,  ratings.map(&:score).sum / ratings.size.to_f]}.sort_by { |_, rating| rating }
+    ratings.group_by { |r| r.beer.style }.map { |style, ratings| [style, ratings.map(&:score).sum / ratings.size.to_f] }.sort_by { |_, rating| rating }
   end
 
   def average_score_by_brewery
-    ratings.group_by { |r| r.beer.brewery }.map { |brewery, ratings|  [brewery.name,  ratings.map(&:score).sum / ratings.size.to_f]}.sort_by { |_, rating| rating }
+    ratings.group_by { |r| r.beer.brewery }.map { |brewery, ratings| [brewery.name, ratings.map(&:score).sum / ratings.size.to_f] }.sort_by { |_, rating| rating }
   end
 end
