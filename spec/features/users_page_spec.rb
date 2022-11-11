@@ -59,7 +59,10 @@ describe "User" do
       create_rating('iso 3', '30')
       visit user_path(user1)
       expect(page).to have_content "Pekka has made 2 ratings with an average score of 25.0"
-      click_link(href: "/ratings/2")
+      within(".ratings") do
+        all('a')[1].click
+      end
+
       expect(page).to have_content "Pekka has made 1 rating with an average score of 20.0"
     end
 
