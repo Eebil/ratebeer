@@ -76,6 +76,7 @@ group :test do
   gem "factory_bot_rails", "~> 6.2"
   gem "launchy"
   gem 'simplecov', require: false
+  gem 'webmock'
 end
 
 gem "rubocop", "~> 1.38"
