@@ -1,4 +1,6 @@
 class PlacesController < ApplicationController
+  before_action :set_place, only: %i[show]
+
   def index
   end
 
@@ -13,6 +15,12 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Rails.cache.read(session[:latest_city]).find(params[:id]).first
+  end
+
+  private
+
+  def set_place
+    @place = Rails.cache.read(session[:latest_city]).select { |place| place.id == params[:id] }.first
   end
 end
+
