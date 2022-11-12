@@ -464,7 +464,6 @@
       "/Users/eebil/Dev/ratebeer/lib/beermapping_api.rb": {
         "lines": [
           1,
-          null,
           1,
           6,
           11,
@@ -486,6 +485,9 @@
           null,
           1,
           5,
+          0,
+          null,
+          0,
           null,
           null
         ]
@@ -511,7 +513,12 @@
           1,
           null,
           2,
+          2,
           null,
+          null,
+          null,
+          1,
+          0,
           null,
           null
         ]
@@ -755,6 +762,6 @@
         }
       }
     },
-    "timestamp": 1668253108
+    "timestamp": 1668273946
   }
 }
