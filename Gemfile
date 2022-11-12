@@ -80,3 +80,5 @@ end
 
 gem "rubocop", "~> 1.38"
 
+
+gem "httparty", "~> 0.20.0"
