@@ -23,4 +23,3 @@ class PlacesController < ApplicationController
     @place = Rails.cache.read(session[:latest_city]).select { |place| place.id == params[:id] }.first
   end
 end
-
