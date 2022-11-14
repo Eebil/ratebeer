@@ -757,6 +757,29 @@
         "branches": {
         }
       },
+      "/Users/eebil/Dev/ratebeer/app/controllers/styles_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/eebil/Dev/ratebeer/app/jobs/application_job.rb": {
         "lines": [
           0,
@@ -781,6 +804,6 @@
         }
       }
     },
-    "timestamp": 1668432562
+    "timestamp": 1668433365
   }
 }
