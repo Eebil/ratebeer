@@ -5,9 +5,10 @@ include Helpers
 describe "User" do
   let!(:brewery) { FactoryBot.create :brewery, name: "Koff" }
   let!(:brewery2) { FactoryBot.create :brewery, name: "BestBrew" }
+  let!(:style) {FactoryBot.create :style, name: "IPA"}
   let!(:beer1) { FactoryBot.create :beer, name: "iso 3", brewery:brewery }
   let!(:beer2) { FactoryBot.create :beer, name: "Karhu", brewery:brewery }
-  let!(:beer3) { FactoryBot.create :beer, name: "IpaDapa", brewery:brewery2, style: "IPA" }
+  let!(:beer3) { FactoryBot.create :beer, name: "IpaDapa", brewery:brewery2, style: style}
   let!(:user1) { FactoryBot.create :user }
   let!(:user2) { FactoryBot.create :user, username: "Eebil", password: "Password12", password_confirmation: "Password12" }
   before :each do

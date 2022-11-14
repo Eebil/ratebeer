@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Beer, type: :model do
   let(:test_brewery) { Brewery.create name: "test", year: 2000 }
-  let(:test_beer) { Beer.create name: "testbeer", style: "teststyle", brewery: test_brewery }
+  let(:test_style)   { Style.create name: "Lager", description: "test" }
+  let(:test_beer) { Beer.create name: "testbeer", style: test_style, brewery: test_brewery }
   let(:no_style_beer) { Beer.create name: "testbeer", brewery: test_brewery }
   let(:no_name_beer)  { Beer.create name: "testbeer", brewery: test_brewery }
 

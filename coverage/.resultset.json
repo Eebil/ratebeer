@@ -45,6 +45,7 @@
           1,
           1,
           1,
+          1,
           null,
           1,
           null,
@@ -116,7 +117,7 @@
           null,
           null,
           1,
-          133,
+          141,
           null,
           null,
           1,
@@ -231,7 +232,7 @@
           1,
           null,
           1,
-          46,
+          44,
           null,
           0,
           null,
@@ -252,6 +253,13 @@
           1,
           19,
           null,
+          null
+        ]
+      },
+      "/Users/eebil/Dev/ratebeer/app/models/style.rb": {
+        "lines": [
+          1,
+          1,
           null
         ]
       },
@@ -393,6 +401,8 @@
           null,
           null,
           1,
+          0,
+          0,
           null,
           null,
           null,
@@ -527,7 +537,6 @@
           1,
           0,
           null,
-          null,
           null
         ]
       },
@@ -601,6 +610,8 @@
           0,
           null,
           null,
+          0,
+          0,
           0,
           0,
           null,
@@ -723,6 +734,7 @@
           null,
           0,
           0,
+          0,
           null,
           0,
           0,
@@ -770,6 +782,6 @@
         }
       }
     },
-    "timestamp": 1668284447
+    "timestamp": 1668426342
   }
 }

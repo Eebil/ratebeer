@@ -6,11 +6,12 @@ describe "New Beer" do
   let!(:user) { FactoryBot.create :user }
   before :each do
     FactoryBot.create :brewery
+    FactoryBot.create :style
     sign_in(username: "Pekka", password: "Foobar1")
   end
 
   it "creates new beer when given valid form entries" do
-    create_new_beer('test', 'Weizen', 'anonymous')
+    create_new_beer('test', 'Lager', 'anonymous')
 
     expect{
       click_button('Create Beer')
@@ -20,7 +21,7 @@ describe "New Beer" do
   end
 
   it "Won't create new new beer from invalid parameters" do
-    create_new_beer("", 'Weizen', 'anonymous')
+    create_new_beer("", 'Lager', 'anonymous')
 
     expect{
       click_button('Create Beer')

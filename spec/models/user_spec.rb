@@ -28,7 +28,8 @@ RSpec.describe User, type: :model do
     end
 
     it "is the only rated if only one rating" do
-      beer = FactoryBot.create(:beer)
+      style = FactoryBot.create(:style)
+      beer = FactoryBot.create(:beer, style: style)
       rating = FactoryBot.create(:rating, score: 20, beer: beer, user: user)
     
       expect(user.favorite_beer).to eq(beer)
@@ -44,6 +45,7 @@ RSpec.describe User, type: :model do
 
   describe "favorite style" do
     let(:user) { FactoryBot.create(:user) }
+    let(:best_style) {FactoryBot.create(:style, name: "Stout")}
 
     it "has a method for determining favorite style" do
       expect(user).to respond_to(:favorite_style)
@@ -60,9 +62,7 @@ RSpec.describe User, type: :model do
 
     it "Is the style with best avrage score when user has rated many syled beers" do
       create_beers_with_many_ratings({user: user}, 10, 20, 15, 7, 9) # Lager average 12.2
-      best_beer_style = create_beer_with_rating({user: user}, 40, "Stout").style
-      create_beer_with_rating({user: user}, 30, "Stout")
-      create_beer_with_rating({user: user}, 20, "Sour")
+      best_beer_style = create_beer_with_rating({user: user}, 40, best_style).style
 
       expect(user.favorite_style).to eq(best_beer_style)
     end
@@ -70,6 +70,7 @@ RSpec.describe User, type: :model do
 
   describe "Favorite brewery" do
     let(:user) { FactoryBot.create(:user) }
+    let(:style) { FactoryBot.create(:style) }
     let(:crap_brew) { FactoryBot.create(:brewery, name: "Crap Brew") }
     let(:good_brew) { FactoryBot.create(:brewery, name: "Good Brew") }
 
@@ -82,15 +83,15 @@ RSpec.describe User, type: :model do
     end
 
     it "Is the brewery of the only beer that is rated by the user" do
-      create_beer_with_rating({ user: user }, 25, "Lager", good_brew)
+      create_beer_with_rating({ user: user }, 25, style, good_brew)
       expect(user.favorite_brewery).to eq(good_brew.name)
     end
 
     it "Is the brewery with highest average score from the user" do
-      create_beer_with_rating({ user: user }, 40, "Lager", good_brew)
-      create_beer_with_rating({ user: user }, 34, "Lager", good_brew)
-      create_beer_with_rating({ user: user }, 25, "Lager", crap_brew)
-      create_beer_with_rating({ user: user }, 13, "Lager", crap_brew)
+      create_beer_with_rating({ user: user }, 40, style, good_brew)
+      create_beer_with_rating({ user: user }, 34, style, good_brew)
+      create_beer_with_rating({ user: user }, 25, style, crap_brew)
+      create_beer_with_rating({ user: user }, 13, style, crap_brew)
 
       expect(user.favorite_brewery).to eq(good_brew.name)
     end

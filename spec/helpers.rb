@@ -8,7 +8,7 @@ module Helpers
   end
 
 
-  def create_beer_with_rating(object, score, style = "Lager", brewery = FactoryBot.create(:brewery))
+  def create_beer_with_rating(object, score, style = FactoryBot.create(:style), brewery = FactoryBot.create(:brewery))
     beer = FactoryBot.create(:beer, style:, brewery: brewery)
     FactoryBot.create(:rating, beer:, score:, user: object[:user])
     beer
@@ -23,7 +23,7 @@ module Helpers
   def create_new_beer(name, style, brewery)
     visit new_beer_path
     fill_in('beer_name', with: name)
-    select( style , from: 'beer_style')
+    select( style , from: 'beer_style_id')
     select( brewery, from: 'beer_brewery_id')
   end
 
